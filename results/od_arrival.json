@@ -1,0 +1,135 @@
+{
+ "tau": 3.0,
+ "top": [
+  {
+   "from": "Yakoma",
+   "to": "Watsa",
+   "w": 0.01
+  },
+  {
+   "from": "Wapinda",
+   "to": "Yakoma",
+   "w": 0.007251487850913095
+  },
+  {
+   "from": "Alimbongo",
+   "to": "Dakwa",
+   "w": 0.005713787412539992
+  },
+  {
+   "from": "Dakwa",
+   "to": "Wapinda",
+   "w": 0.005320586137641615
+  },
+  {
+   "from": "Bulu",
+   "to": "Dungu",
+   "w": 0.005062830570612588
+  },
+  {
+   "from": "Dungu",
+   "to": "Dakwa",
+   "w": 0.0039564125462162114
+  },
+  {
+   "from": "Kayna",
+   "to": "Bulu",
+   "w": 0.0037574431481100607
+  },
+  {
+   "from": "Dakwa",
+   "to": "Yakoma",
+   "w": 0.0033932712772286157
+  },
+  {
+   "from": "Kayna",
+   "to": "Dungu",
+   "w": 0.0031605007668535456
+  },
+  {
+   "from": "Dungu",
+   "to": "Alimbongo",
+   "w": 0.0030756742234877123
+  },
+  {
+   "from": "Manguredjipa",
+   "to": "Kayna",
+   "w": 0.0030687462395922504
+  },
+  {
+   "from": "Biena",
+   "to": "Kayna",
+   "w": 0.00306874623959225
+  }
+ ],
+ "first_week": {
+  "Bambu": 0.0,
+  "Bunia": 0.0,
+  "Mongbwalu": 0.0,
+  "Nizi": 0.0,
+  "Nyankunde": 0.0,
+  "Rwampara": 0.0,
+  "Butembo": 0.0,
+  "Goma": 0.0,
+  "Katwa": 0.0,
+  "Miti-Murhesa": 0.0,
+  "Aru": 0.14,
+  "Kilo": 0.14,
+  "Kalunguta": 0.43,
+  "Oicha": 0.43,
+  "Kyondo": 0.57,
+  "Aungba": 1.14,
+  "Damas": 1.14,
+  "Gethy": 1.14,
+  "Komanda": 1.14,
+  "Lita": 1.14,
+  "Mangala": 1.14,
+  "Beni": 1.14,
+  "Logo": 1.57,
+  "Mambasa": 1.57,
+  "Rimba": 1.71,
+  "Tchomia": 2.71,
+  "Kambala": 2.86,
+  "Masereka": 2.86,
+  "Vuhovi": 2.86,
+  "Nia-Nia": 3.29,
+  "Mabalako": 3.29,
+  "Drodro": 3.86,
+  "Fataki": 3.86,
+  "Musienene": 3.86,
+  "Mandima": 5.29,
+  "Lolwa": 5.71,
+  "Boga": 6.57,
+  "Wamba": 7.14,
+  "Lubunga": 7.14,
+  "Makiso-Kisangani": 7.14,
+  "Mangobo": 7.14,
+  "Ariwara": 7.29,
+  "Boma Mangbetu": 7.57,
+  "Isiro": 7.57,
+  "Pawa": 7.57,
+  "Mahagi": 7.86,
+  "Adja": 8.43,
+  "Rungu": 9.0,
+  "Kabondo": 10.0,
+  "Wanie-Rukula": 10.29,
+  "Lubero": 10.43,
+  "Gombari": 10.86,
+  "Bafwasende": 10.86,
+  "Buta": 11.86,
+  "Tshopo": 12.0,
+  "Viadana": 12.71,
+  "Mutwanga": 13.14,
+  "Ganga": 13.57,
+  "Biena": 13.86,
+  "Manguredjipa": 13.86,
+  "Kayna": 15.14,
+  "Bulu": 16.0,
+  "Dungu": 17.14,
+  "Alimbongo": 19.14,
+  "Dakwa": 20.0,
+  "Wapinda": 21.14,
+  "Yakoma": 22.86,
+  "Watsa": 24.86
+ }
+}

@@ -1,0 +1,38 @@
+% LuaLaTeX, compatible with Realtime TeX. No shell-escape required.
+\usepackage[margin=1in,headheight=16pt]{geometry}
+\usepackage{fontspec}
+% Chinese support for LuaLaTeX / Realtime TeX; keep English headings unchanged.
+\usepackage{luatexja-fontspec}
+\setmainjfont{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]
+\setsansjfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setmonojfont{FandolFang-Regular.otf}
+\setmainfont{TeX Gyre Termes}[Renderer=Basic]
+\setsansfont{TeX Gyre Heros}[Renderer=Basic]
+\setmonofont{TeX Gyre Cursor}[Renderer=Basic]
+\usepackage{amsmath,amssymb}
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Termes Math}
+\usepackage{graphicx}
+\graphicspath{{figures/}{../results/}}
+\usepackage{booktabs,array,longtable}
+\usepackage{enumitem}
+\usepackage{caption,subcaption}
+\usepackage{xcolor}
+\usepackage{fancyhdr,lastpage}
+\usepackage{xurl}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={\PaperTitle},pdfauthor={},pdfsubject={MCM/ICM practice}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Team \# \TeamNumber}
+\fancyhead[R]{Page \thepage\ of \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.25em}
+\setlist{nosep}
+\numberwithin{equation}{section}
+% 目录只到 subsection，避免 5.x.y 级条目把目录撑到两页。
+\setcounter{tocdepth}{2}
+% Chinese and English text are supported. Do not load xeCJK with LuaLaTeX.

@@ -1,0 +1,41 @@
+{
+ "base": 8270,
+ "rows": [
+  {
+   "name": "基线",
+   "reported": 8270,
+   "deaths": 21974,
+   "rel": 0.0
+  },
+  {
+   "name": "S1 隔离×1.2",
+   "reported": 7697,
+   "deaths": 20923,
+   "rel": -6.9
+  },
+  {
+   "name": "S3 安葬×0.5",
+   "reported": 2913,
+   "deaths": 15721,
+   "rel": -64.8
+  },
+  {
+   "name": "S4 院感×0.5",
+   "reported": 6742,
+   "deaths": 20226,
+   "rel": -18.5
+  },
+  {
+   "name": "S7/S8 社区×0.9",
+   "reported": 7120,
+   "deaths": 20661,
+   "rel": -13.9
+  },
+  {
+   "name": "C2 三件套",
+   "reported": 2416,
+   "deaths": 14738,
+   "rel": -70.8
+  }
+ ]
+}

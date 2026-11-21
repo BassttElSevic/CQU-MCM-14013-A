@@ -1,0 +1,14 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build paper (LuaLaTeX)",
+      "type": "process",
+      "command": "latexmk",
+      "args": ["-lualatex", "-synctex=1", "-interaction=nonstopmode", "-halt-on-error", "-outdir=build", "main.tex"],
+      "options": {"cwd": "${workspaceFolder}/paper"},
+      "group": {"kind": "build", "isDefault": true},
+      "problemMatcher": []
+    }
+  ]
+}

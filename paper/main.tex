@@ -1,0 +1,58 @@
+% !TEX program = lualatex
+% !TEX root = main.tex
+\documentclass[12pt,letterpaper]{article}
+\input{metadata}
+\input{preamble}
+
+\begin{document}
+% Summary Sheet: keep this entire first page within ONE page.
+\thispagestyle{empty}
+\noindent
+\begin{minipage}[t]{0.30\textwidth}
+\centering Problem Chosen\\[6pt]
+{\Large\bfseries \ProblemChosen}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.34\textwidth}
+\centering {\bfseries \ContestYear\\CQU MCM\\Summary Sheet}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.30\textwidth}
+\centering Team Control Number\\[6pt]
+{\Large\bfseries \TeamNumber}
+\end{minipage}
+\par\vspace{8pt}\hrule\vspace{18pt}
+\begin{center}
+{\Large\bfseries \PaperTitle\par}
+\vspace{12pt}
+{\large\bfseries Summary}
+\end{center}
+\input{sections/00-summary}
+\vfill
+\clearpage
+
+\tableofcontents
+\clearpage
+\input{sections/01-introduction}
+\input{sections/02-assumptions}
+\input{sections/03-notation}
+\input{sections/04-data}
+\input{sections/05-model}
+\input{sections/06-sensitivity}
+\input{sections/07-evaluation}
+\input{sections/08-conclusion}
+\input{sections/09-references}
+
+% Appendix: supplementary material, not a substitute for core arguments.
+% Comment out this group if no appendix is needed; it counts toward the page limit.
+\clearpage
+\appendix
+\input{sections/10-appendix}
+
+% Memo / Letter: enable when explicitly required by the chosen problem.
+% Kept on a separate page, outside the main analysis and Summary.
+% \clearpage
+% \input{sections/12-memo-letter}
+
+% Optional separate disclosure, following the rules of the chosen problem.
+% \clearpage
+% \input{sections/11-ai-use}
+\end{document}

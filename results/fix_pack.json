@@ -1,0 +1,444 @@
+{
+ "calib": {
+  "r2": 0.9553,
+  "rmse": 34.61,
+  "mape": 6.9,
+  "rmse_out": 119.5,
+  "mape_out": 20.2,
+  "k_mean_late": 0.4619,
+  "reff_late": 0.893,
+  "r0_base": 1.934,
+  "rho": 0.3917,
+  "seed": 122.6,
+  "k_peak": 2.557,
+  "k_week27": 0.2769,
+  "source": "fit_final.json（16 节点样条 + logistic ρ）, backtest_final.json（样本外）",
+  "engine": "fix_pack_run.py：8 舱（S,E,I,H,T,F,R,V），k(t≤27) 用样条、t>27 取 k̄"
+ },
+ "baseline": {
+  "cases": 5672,
+  "deaths": 2937,
+  "cases_true_scale": 14480,
+  "deaths_true_scale": 7498,
+  "peak_week": 28,
+  "peak": 328,
+  "end_week": ">52",
+  "end_abs": null,
+  "end_week_def": "自第 27 周起算的周数；上限 52，超过记 >52",
+  "horizon": "第 27→53 周（26 周）",
+  "start_state_cases": 11516,
+  "convention": "病例与死亡同为报告口径（皆乘 ρ 周检出比例）；真实规模见 *_true_scale，约为其 1/0.392 倍"
+ },
+ "measures": {
+  "S1": {
+   "label": "gh×1.2",
+   "cases": 5784,
+   "deaths": 2988,
+   "peak": 329,
+   "peak_week": 29,
+   "end_week": ">52",
+   "end_abs": null,
+   "rel": 2.0
+  },
+  "S2": {
+   "label": "tr90",
+   "cases": 5867,
+   "deaths": 3026,
+   "peak": 329,
+   "peak_week": 29,
+   "end_week": ">52",
+   "end_abs": null,
+   "rel": 3.4
+  },
+  "S2p": {
+   "label": "tr95",
+   "cases": 5949,
+   "deaths": 3062,
+   "peak": 330,
+   "peak_week": 29,
+   "end_week": ">52",
+   "end_abs": null,
+   "rel": 4.9
+  },
+  "S3": {
+   "label": "bF×0.5",
+   "cases": 2172,
+   "deaths": 1320,
+   "peak": 298,
+   "peak_week": 28,
+   "end_week": "30",
+   "end_abs": 57,
+   "rel": -61.7
+  },
+  "S4": {
+   "label": "bH×0.5",
+   "cases": 4700,
+   "deaths": 2496,
+   "peak": 323,
+   "peak_week": 28,
+   "end_week": ">52",
+   "end_abs": null,
+   "rel": -17.1
+  },
+  "S5a": {
+   "label": "nu2.5",
+   "cases": 3365,
+   "deaths": 1898,
+   "peak": 327,
+   "peak_week": 28,
+   "end_week": "29",
+   "end_abs": 56,
+   "rel": -40.7
+  },
+  "S5b": {
+   "label": "nu5.0",
+   "cases": 2591,
+   "deaths": 1528,
+   "peak": 326,
+   "peak_week": 28,
+   "end_week": "22",
+   "end_abs": 49,
+   "rel": -54.3
+  },
+  "S6a": {
+   "label": "phi50",
+   "cases": 4199,
+   "deaths": 2123,
+   "peak": 326,
+   "peak_week": 28,
+   "end_week": ">52",
+   "end_abs": null,
+   "rel": -26.0
+  },
+  "S6b": {
+   "label": "phi80",
+   "cases": 3548,
+   "deaths": 1766,
+   "peak": 324,
+   "peak_week": 28,
+   "end_week": "49",
+   "end_abs": 76,
+   "rel": -37.4
+  },
+  "S7": {
+   "label": "bI×0.90",
+   "cases": 4956,
+   "deaths": 2613,
+   "peak": 325,
+   "peak_week": 28,
+   "end_week": ">52",
+   "end_abs": null,
+   "rel": -12.6
+  },
+  "S8": {
+   "label": "bI×0.90",
+   "cases": 4956,
+   "deaths": 2613,
+   "peak": 325,
+   "peak_week": 28,
+   "end_week": ">52",
+   "end_abs": null,
+   "rel": -12.6
+  },
+  "S9": {
+   "label": "m 1%→0.2%",
+   "cases": 5672,
+   "deaths": 2937,
+   "peak": 328,
+   "peak_week": 28,
+   "end_week": ">52",
+   "end_abs": null,
+   "rel": -0.01,
+   "note": "相同引擎下 m=1% → 5671.64 例，m=0.2% → 5671.64 例，m=0 → 5671.64 例；最大差 0.000 例。总量不变（流动算子对总量零和），变化只在省际分布"
+  }
+ },
+ "combos": {
+  "C1": {
+   "desc": "隔离 gh×1.2 + 追踪 78%→90%（gh、θ 联动）+ 院感 βH×0.5",
+   "cases": 4538,
+   "deaths": 2423,
+   "peak": 322,
+   "peak_week": 28,
+   "end_week": ">52",
+   "end_abs": null,
+   "rel": -20.0
+  },
+  "C2": {
+   "desc": "C1 + 安葬 βF×0.5",
+   "cases": 1834,
+   "deaths": 1158,
+   "peak": 292,
+   "peak_week": 28,
+   "end_week": "25",
+   "end_abs": 52,
+   "rel": -67.7
+  },
+  "C3": {
+   "desc": "C2 + 治疗 φ=50%, ε=0.4",
+   "cases": 1590,
+   "deaths": 966,
+   "peak": 290,
+   "peak_week": 28,
+   "end_week": "22",
+   "end_abs": 49,
+   "rel": -72.0
+  }
+ },
+ "timing": {
+  "endpoint": "第 53 周（统一终点；两条支路都自 t=0 积分到第 53 周）",
+  "convention": "累计病例/死亡为报告口径（ρ 加权），含分支前历史；分支后为分支起点到第 53 周",
+  "A": {
+   "start_week": 9.4286,
+   "label": "第 9.43 周（7 月中旬，累计约 2 073）起即达到当前控制强度 k̄",
+   "history_cases": 2200,
+   "branch_cases": 4685,
+   "cum_cases": 6884,
+   "cum_deaths": 3158,
+   "end_week": ">52",
+   "end_week_from_branch": ">52"
+  },
+  "B": {
+   "start_week": 27.0,
+   "label": "第 27 周才达到（= 基线）",
+   "history_cases": 11516,
+   "branch_cases": 5672,
+   "cum_cases": 17188,
+   "cum_deaths": 7991,
+   "end_week": ">52",
+   "end_week_from_branch": ">52"
+  },
+  "avoided": {
+   "cases": 10303,
+   "deaths": 4833,
+   "cases_pct": 59.9,
+   "weeks_earlier": 30.0
+  },
+  "last_week_inc_A": 38.2,
+  "last_week_inc_B": 127.5,
+  "extrapolated": {
+   "note": "把 k̄ 一直维持到第 200 周（超出观察期，仅用于给出\"结束周\"有限值）",
+   "A_end_week": 105,
+   "B_end_week": 135,
+   "weeks_earlier": 30.0,
+   "A_final_cases": 7832,
+   "B_final_cases": 20321
+  }
+ },
+ "therapy_mech": {
+  "baseline": {
+   "cases": 5672,
+   "deaths": 2937,
+   "reff": 0.893
+  },
+  "full": {
+   "cases": 4199,
+   "deaths": 2123,
+   "reff": 0.818
+  },
+  "chain_only": {
+   "cases": 4764,
+   "deaths": 2526,
+   "reff": 0.85
+  },
+  "cfr_only": {
+   "cases": 4984,
+   "deaths": 2458,
+   "reff": 0.861
+  },
+  "pct": {
+   "full": -26.0,
+   "chain_only": -16.0,
+   "cfr_only": -12.1,
+   "chain_share_of_drop": 61.6
+  },
+  "share": {
+   "community": 34.0,
+   "hospital": 9.9,
+   "funeral": 56.1
+  },
+  "note": "拆解：φ=50% 且 T 不参与院内传播、ε=0（只把病人移出传播链）→ -16.0%；φ=50% 且 T 仍参与院内传播、ε=0.4（只降病死率）→ -12.1%；两者合计 = -26.0%。移出传播链贡献了降幅的 62%。"
+ },
+ "crossborder": {
+  "rows": [
+   {
+    "R": 0.8,
+    "q": 1.0,
+    "all_extinct_9_indep": 100.0,
+    "all_extinct_one_chain": 100.0,
+    "ratio": "—"
+   },
+   {
+    "R": 1.0,
+    "q": 1.0,
+    "all_extinct_9_indep": 100.0,
+    "all_extinct_one_chain": 100.0,
+    "ratio": "—"
+   },
+   {
+    "R": 1.2,
+    "q": 0.8333,
+    "all_extinct_9_indep": 19.38,
+    "all_extinct_one_chain": 23.26,
+    "ratio": 1.2
+   },
+   {
+    "R": 1.5,
+    "q": 0.6667,
+    "all_extinct_9_indep": 2.6,
+    "all_extinct_one_chain": 3.9,
+    "ratio": 1.5
+   },
+   {
+    "R": 0.893,
+    "q": 1.0,
+    "all_extinct_9_indep": 100.0,
+    "all_extinct_one_chain": 100.0,
+    "ratio": "—"
+   },
+   {
+    "R": 1.38,
+    "q": 0.7246,
+    "all_extinct_9_indep": 5.51,
+    "all_extinct_one_chain": 7.6,
+    "ratio": 1.38
+   }
+  ],
+  "extra": "R=0.893 为当前标定 R_eff（§5.1）；R=1.38 为早期强度（第 5 周），用于对齐 §6.5 的 5.5% 旧值",
+  "note": "q=1/R 为单例输入最终熄灭的概率（R>1）；R≤1 时必然熄灭（q=1）。9 个独立输入全部熄灭 = q^9；同一输入链已产生 8 例续发（共 9 例在传）时 = q^8，两者相差一个因子 q（独立口径低估风险）。"
+ },
+ "kinship": {
+  "K2": {
+   "cum_true27": 24363.3,
+   "cases_rep27": 11516,
+   "cases_rep24": 10263.8,
+   "peak": 328
+  },
+  "K1": {
+   "cum_true27": 24364.4,
+   "cases_rep27": 11516,
+   "cases_rep24": 10264.3
+  },
+  "rel_diff_27_pct": -0.0045,
+  "rel_diff_24_pct": -0.0046,
+  "note": "同一组标定参数（同一 k(t)）下把家庭维 K=2 合并为 K=1；旧值 0.025%（24 周累计）。"
+ },
+ "shares27": {
+  "community": 34.0,
+  "hospital": 9.9,
+  "funeral": 56.1
+ },
+ "gh_convention": {
+  "used": "gh = (7/5)*gh_mul（倍率作用在\"隔离率/住院速率\"上，与正文\"加快隔离\"一致）",
+  "probe": {
+   "gh_rate_x1.2": {
+    "cases": 5784,
+    "rel": 2.0,
+    "note": "隔离率×1.2（gh=1.4×1.2，住院更快；新主口径）"
+   },
+   "gh_delay_x1.2": {
+    "cases": 5534,
+    "rel": -2.4,
+    "note": "隔离延迟×1.2（gh=1.4/1.2，住院更慢；旧 combo_deaths.py 口径）"
+   },
+   "C1_delay_x1.385": {
+    "cases": 4792,
+    "rel": -15.5,
+    "note": "C1 按旧码除法口径（gh 减小 38.5%）复核；主口径见 combos.C1"
+   }
+  },
+  "warn": "旧引擎 combo_deaths.py:32 的 gh=(7/5)/gh_mul 方向相反；§5.2 旧表里的 −6.9% 等数字按那个口径跑出，与正文\"加快隔离\"矛盾"
+ },
+ "ranking": [
+  {
+   "id": "S3",
+   "label": "bF×0.5",
+   "cases": 2172,
+   "rel": -61.7
+  },
+  {
+   "id": "S5b",
+   "label": "nu5.0",
+   "cases": 2591,
+   "rel": -54.3
+  },
+  {
+   "id": "S5a",
+   "label": "nu2.5",
+   "cases": 3365,
+   "rel": -40.7
+  },
+  {
+   "id": "S6b",
+   "label": "phi80",
+   "cases": 3548,
+   "rel": -37.4
+  },
+  {
+   "id": "S6a",
+   "label": "phi50",
+   "cases": 4199,
+   "rel": -26.0
+  },
+  {
+   "id": "S4",
+   "label": "bH×0.5",
+   "cases": 4700,
+   "rel": -17.1
+  },
+  {
+   "id": "S7",
+   "label": "bI×0.90",
+   "cases": 4956,
+   "rel": -12.6
+  },
+  {
+   "id": "S8",
+   "label": "bI×0.90",
+   "cases": 4956,
+   "rel": -12.6
+  },
+  {
+   "id": "S9",
+   "label": "m 1%→0.2%",
+   "cases": 5672,
+   "rel": -0.01
+  },
+  {
+   "id": "S1",
+   "label": "gh×1.2",
+   "cases": 5784,
+   "rel": 2.0
+  },
+  {
+   "id": "S2",
+   "label": "tr90",
+   "cases": 5867,
+   "rel": 3.4
+  },
+  {
+   "id": "S2p",
+   "label": "tr95",
+   "cases": 5949,
+   "rel": 4.9
+  }
+ ],
+ "reproducibility": {
+  "script": "work/km/fix_pack_run.py",
+  "python": "C:\\Users\\19831\\.dsh\\dsh-runtimes\\dsh-primary-runtime\\dependencies\\python\\python.exe",
+  "cmd": "python work/km/fix_pack_run.py",
+  "inputs": [
+   "work/km/fit_final.json",
+   "work/km/backtest_final.json",
+   "work/km/model.py"
+  ],
+  "note": "同一解释器重跑输出一致；无随机数（seed 取自标定），无 matplotlib"
+ },
+ "checks": {
+  "cases_true_27": 24363.3,
+  "deaths_true_27": 11150.5,
+  "cases_rep_27": 11516.0,
+  "cases_true_943": 2451.2,
+  "s_n_27": 0.999079,
+  "note": "cases_rep_27 应 ≈ 11 605（题面/旧文口径），用于验证引擎复现标定轨迹"
+ }
+}

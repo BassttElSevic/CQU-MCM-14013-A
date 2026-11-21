@@ -1,0 +1,93 @@
+{
+ "baseline": {
+  "weeks_below5": null,
+  "weeks_below1": null,
+  "cum": 2705.934698693057,
+  "dead": 1496.5755937342617,
+  "peak": 252.6408993419996
+ },
+ "S1_isolation": {
+  "weeks_below5": null,
+  "weeks_below1": null,
+  "cum": 2759.9727106101836,
+  "dead": 1521.7841100567161,
+  "peak": 252.46314313315793
+ },
+ "S2_trace90": {
+  "weeks_below5": null,
+  "weeks_below1": null,
+  "cum": 2453.599988912294,
+  "dead": 1378.9750377892226,
+  "peak": 250.239481687729
+ },
+ "S2_trace95": {
+  "weeks_below5": null,
+  "weeks_below1": null,
+  "cum": 2357.8923699066736,
+  "dead": 1334.2001158811163,
+  "peak": 249.23652243192834
+ },
+ "S3_safeburial": {
+  "weeks_below5": 22,
+  "weeks_below1": null,
+  "cum": 1310.4219815506428,
+  "dead": 837.4597419376402,
+  "peak": 233.0027325567446
+ },
+ "S4_hospctrl": {
+  "weeks_below5": null,
+  "weeks_below1": null,
+  "cum": 2362.120693210829,
+  "dead": 1336.186337992383,
+  "peak": 249.3099308712684
+ },
+ "S5_vaccine": {
+  "weeks_below5": null,
+  "weeks_below1": null,
+  "cum": 2029.707753151918,
+  "dead": 1179.9137664416096,
+  "peak": 245.30784598308986
+ },
+ "S6_therapy": {
+  "weeks_below5": 21,
+  "weeks_below1": null,
+  "cum": 1358.209672982055,
+  "dead": 516.6626259554007,
+  "peak": 243.9318292376116
+ },
+ "S7_pep": {
+  "weeks_below5": null,
+  "weeks_below1": null,
+  "cum": 2333.1233813186427,
+  "dead": 1322.5966885780686,
+  "peak": 248.967607839138
+ },
+ "S8_education": {
+  "weeks_below5": null,
+  "weeks_below1": null,
+  "cum": 2333.1233813186427,
+  "dead": 1322.5966885780686,
+  "peak": 248.967607839138
+ },
+ "C1_iso_trace_hosp": {
+  "weeks_below5": null,
+  "weeks_below1": null,
+  "cum": 2134.4786142957546,
+  "dead": 1229.4130833240115,
+  "peak": 246.44274066133778
+ },
+ "C2_combo": {
+  "weeks_below5": 18,
+  "weeks_below1": 26,
+  "cum": 1088.8901110598033,
+  "dead": 730.795334144528,
+  "peak": 227.1196826661798
+ },
+ "C3_all": {
+  "weeks_below5": 13,
+  "weeks_below1": 19,
+  "cum": 794.5789174102975,
+  "dead": 353.0352260800221,
+  "peak": 221.7155262972744
+ }
+}

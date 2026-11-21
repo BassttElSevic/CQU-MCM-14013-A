@@ -1,0 +1,27 @@
+paper/build/*
+!paper/build/.gitkeep
+paper/output/*
+!paper/output/.gitkeep
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+.DS_Store
+
+# Local editor paths and credentials must not be published.
+.vscode/settings.json
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.pi/
+.pi-lens/
