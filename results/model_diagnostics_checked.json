@@ -1,0 +1,84 @@
+{
+  "source": "Recomputed diagnostics of supplied prediction vectors; no new mechanistic fit.",
+  "full_fit": {
+    "n": 27,
+    "r2": 0.9553398965975802,
+    "rmse": 34.61365318614209,
+    "mape": 6.898446428150955
+  },
+  "training": {
+    "n": 20,
+    "r2": 0.9685517206245084,
+    "rmse": 33.09024485251058,
+    "mape": 6.963682223138486
+  },
+  "validation": {
+    "n": 7,
+    "r2": -4.577015927323961,
+    "rmse": 119.4994560945378,
+    "mape": 20.151187897705167
+  },
+  "validation_complete_weeks": {
+    "n": 6,
+    "r2": -5.217668546902334,
+    "rmse": 75.10530657791065,
+    "mape": 11.572378802166556
+  },
+  "persistence_forecast": {
+    "n": 7,
+    "r2": -0.4107009070186345,
+    "rmse": 60.10110529052571,
+    "mape": 11.410721220450842
+  },
+  "persistence_complete_weeks": {
+    "n": 6,
+    "r2": -2.7190447030006126,
+    "rmse": 58.08614292583042,
+    "mape": 10.016314961463776
+  },
+  "observed_total": 11605.0,
+  "predicted_total": 11517.436095587022,
+  "regularization_scan": [
+    {
+      "source": "fit_D_lam0p1.json",
+      "eta": 0.1,
+      "n": 27,
+      "r2": 0.9556959716105365,
+      "rmse": 34.4753897092004,
+      "mape": 6.797230433805681
+    },
+    {
+      "source": "fit_D_lam1p0.json",
+      "eta": 1.0,
+      "n": 27,
+      "r2": 0.9555508349473609,
+      "rmse": 34.53181292865456,
+      "mape": 6.799737127484239
+    },
+    {
+      "source": "fit_D_lam3p0.json",
+      "eta": 3.0,
+      "n": 27,
+      "r2": 0.955615156314368,
+      "rmse": 34.506818786133636,
+      "mape": 6.798865483673686
+    },
+    {
+      "source": "fit_D_lam10p0.json",
+      "eta": 10.0,
+      "n": 27,
+      "r2": 0.9550367529497186,
+      "rmse": 34.730929709713934,
+      "mape": 6.813878750328835
+    }
+  ],
+  "last_week_share_of_validation_sse": 0.6614189872690038,
+  "checksums": {
+    "fit_final.json": "586a77c4adabe0aae2a31cfb791daadee6ea3ee8f9acdef85d0bef97dfa27d18",
+    "backtest_final.json": "b29c6cf9f5a35e92fd6ed07f2910ac8e0cbcdb0eac9da566260a44c24270ff48",
+    "fit_D_lam0p1.json": "5cb42f0e132755ce4b1c7286d2fa5779e1b5e60ea1cac45e275e6fd68fc419d0",
+    "fit_D_lam1p0.json": "a6545fb947bbced48196a6135be55d127de08a96907df32d01c66519d0c67b22",
+    "fit_D_lam3p0.json": "6403d5336f9ed453a61eb80937092cd5dae483d4e2b71450af1f192961403c7a",
+    "fit_D_lam10p0.json": "2f1691579f7718ae68205a6bae71aafbd770bac5e22d3916a8fd88de685fa7d4"
+  }
+}

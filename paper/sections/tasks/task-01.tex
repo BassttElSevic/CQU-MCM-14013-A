@@ -1,16 +1,100 @@
 % !TEX root = ../../main.tex
-\subsection{Task 1}
+\subsection{Task 1: Continuous-Time Model}
 \label{sec:task-1}
-test
 
-\subsubsection{Problem Analysis}
-test
+\subsubsection{Population Groups and Contact Structure}
 
-\subsubsection{Model Formulation}
-test
+在 Legrand 等人的六状态框架\cite{legrand2007}中，以 $j$ 表示省份、$k$ 表示家庭型。取 $J=8$、$K=2$，系统共含 96 个状态变量。各组记账人口及其汇总量为
+\begin{equation}
+N_{jk}(t)=\sum_{X\in\{S,E,I,H,F,R\}}X_{jk}(t),\qquad
+N_j(t)=\sum_{k=1}^{K}N_{jk}(t),\qquad
+M_k(t)=\sum_{j=1}^{J}N_{jk}(t).
+\label{eq:group-population}
+\end{equation}
+记账人口包含已移出者；在接种和治疗情景中，求和相应加入 $V,T$。
 
-\subsubsection{Solution Method}
-test
+省内社区、医院接触按省汇总，葬礼接触限定在同省、同家庭型中：
+\begin{equation}
+\lambda_{jk}(t)=k(t)\left[
+\beta_I\frac{\sum_{\ell=1}^{K}I_{j\ell}}{N_j}
++\beta_H\frac{\sum_{\ell=1}^{K}H_{j\ell}}{h_{\mathrm{fac}}N_j}
++\beta_{F,k}\frac{F_{jk}}{N_{jk}}
+\right].
+\label{eq:infection-pressure}
+\end{equation}
+其中 $k(t)$ 为时变强度乘子，$h_{\mathrm{fac}}$ 折算院内接触规模，$\ell$ 为求和下标。$M_k$ 用于跨省汇总；人口为零的组，其接触项取零。
 
-\subsubsection{Results and Interpretation}
-test
+省际净迁移定义为
+\begin{equation}
+(\mathcal{L}X)_{jk}
+=\sum_{i\ne j}w_{ij}(t)X_{ik}
+-X_{jk}\sum_{i\ne j}w_{ji}(t).
+\label{eq:migration-operator}
+\end{equation}
+$w_{ij}$ 为从 $i$ 省到 $j$ 省的速率。迁移作用于 $S,E,I,H,R$；$F$ 保留在死亡所在地。
+
+\subsubsection{State Transitions}
+
+社区发病者的入院、死亡和康复构成竞争转移。由住院比例 $\theta$ 与最终死亡概率 $\delta$ 定义
+\begin{align}
+\delta_1&=\frac{\delta\gamma_i}{\delta\gamma_i+(1-\delta)\gamma_d},
+& a&=\gamma_d\delta_1+\gamma_i(1-\delta_1),\notag\\
+\theta_1&=\frac{\theta a}{\theta a+(1-\theta)\gamma_h},
+& \delta_2&=\frac{\delta\gamma_{ih}}{\delta\gamma_{ih}+(1-\delta)\gamma_{dh}},
+\label{eq:probability-coefficients}\\
+\Delta&=\gamma_h\theta_1+(1-\theta_1)a,
+& \Sigma_H&=\gamma_{dh}\delta_2+\gamma_{ih}(1-\delta_2).
+\label{eq:exit-rates}
+\end{align}
+在参数固定时，这些定义满足
+\begin{equation}
+\frac{\gamma_h\theta_1}{\Delta}=\theta,\qquad
+\frac{\gamma_d\delta_1}{a}=\delta,\qquad
+\frac{\gamma_{dh}\delta_2}{\Sigma_H}=\delta.
+\label{eq:branch-probabilities}
+\end{equation}
+基线中住院和未住院两组共用 $\delta$；参数时变时，上式按当前冻结参数解释。
+
+对每个 $(j,k)$，完整基础方程为
+\begin{equation}
+\left\{\begin{aligned}
+\dot S_{jk}&=-\lambda_{jk}S_{jk}+(\mathcal{L}S)_{jk},\\
+\dot E_{jk}&=\lambda_{jk}S_{jk}-\alpha E_{jk}+(\mathcal{L}E)_{jk},\\
+\dot I_{jk}&=\alpha E_{jk}-\Delta I_{jk}+(\mathcal{L}I)_{jk},\\
+\dot H_{jk}&=\gamma_h\theta_1I_{jk}-\Sigma_H H_{jk}+(\mathcal{L}H)_{jk},\\
+\dot F_{jk}&=\gamma_d(1-\theta_1)\delta_1I_{jk}
+             +\gamma_{dh}\delta_2H_{jk}-\gamma_fF_{jk},\\
+\dot R_{jk}&=\gamma_i(1-\theta_1)(1-\delta_1)I_{jk}
+             +\gamma_{ih}(1-\delta_2)H_{jk}\\
+            &\quad+\gamma_fF_{jk}+(\mathcal{L}R)_{jk}.
+\end{aligned}\right.
+\label{eq:baseline-ode}
+\end{equation}
+$S\to E$、$E\to I$、$I\to H$ 分别表示感染、发病和住院；死亡者经 $F$ 安葬后进入 $R$，康复者直接进入 $R$。
+
+相应的累计发病与累计死亡满足
+\begin{align}
+\dot C(t)&=\alpha\sum_{j,k}E_{jk}(t),\notag\\
+\dot D(t)&=\sum_{j,k}\left[
+\gamma_d(1-\theta_1)\delta_1I_{jk}
++\gamma_{dh}\delta_2H_{jk}\right].
+\label{eq:cumulative-flows}
+\end{align}
+\subsubsection{Conservation and Reproduction Numbers}
+
+数值求解采用自适应步长积分，在干预切换时刻衔接前一段末态；初始人数按疾病状态分配。
+
+再生数采用下一代矩阵法\cite{diekmann1990,vandendriessche2002}。将全部组的 $E,I,H,F$ 排成感染相关状态向量，分别构造新感染矩阵 $\mathcal{F}$ 和其余转移矩阵 $\mathcal{V}$，则
+\begin{equation}
+\mathcal{K}=\mathcal{F}\mathcal{V}^{-1},\qquad
+R_0=\operatorname{spr}(\mathcal{K})\big|_{\text{全易感基准状态}}.
+\label{eq:next-generation}
+\end{equation}
+$\operatorname{spr}$ 表示谱半径，$\mathcal{V}$ 包含省际迁移。采用当前易感人数并冻结当前参数，可得 $R_{\mathrm{eff}}(t)$。
+
+各状态转移成对计入，迁入与迁出相互抵消。非负初值下系统保持非负，并满足
+\begin{equation}
+\frac{\mathrm d}{\mathrm dt}\sum_{j,k}N_{jk}(t)=0,
+\label{eq:population-conservation}
+\end{equation}
+式~\eqref{eq:population-conservation}作为积分结果的守恒检验。两类家庭的状态比例与参数相同时，分组系统退化为合并模型。

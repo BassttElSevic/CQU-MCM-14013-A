@@ -1,0 +1,39 @@
+% !TEX root = ../../main.tex
+\subsection{Task 4: Spatial Spread and Cross-Border Risk}
+\label{sec:task-4}
+
+\subsubsection{Provincial Mobility}
+
+将省际流动分解为总体尺度和相对流向：
+\begin{equation}
+w_{ij}(t)=\gamma_m(t)G_{ij},\qquad
+G_{ii}=0,\quad G_{ij}\geq0,\quad
+\sum_{j\ne i}G_{ij}=1.
+\label{eq:mobility-scale}
+\end{equation}
+$G$ 为给定流动权重，$\gamma_m$ 为连续时间速率。若离省事件具有恒定速率，一周内至少离省一次的概率 $m$ 满足
+\begin{equation}
+\gamma_m=\frac{-\log(1-m)}{1\,\text{周}}.
+\label{eq:rate-probability}
+\end{equation}
+流动改变各地易感者与感染者的分布，其总体影响由 $\sum_{j,k}\lambda_{jk}S_{jk}$ 决定。仅在参数及状态比例均质等条件下，全国累计量才可能对流动变化保持不变。
+
+\subsubsection{Regional Control Strategies}
+
+出行限制通过调整 $W(t)$ 表示；区域联防同时改变相邻地区的发现、转诊与院内防护条件。比较指标包括分省累计病例、首次报告时间及全国总量，并保持各方案的观测口径与评价终点一致。
+
+环围接种以病例接触者及其接触者为目标，需要在病例关联资料上分配保护状态 $V$。现有省份与家庭型分组适于地区尺度比较，接触链层面的资源分配另需接触网络数据。
+
+\subsubsection{Transmission Threshold and Imported Chains}
+
+省际耦合系统的传播阈值由式~\eqref{eq:next-generation}确定。境外输入采用当地条件对应的 $R_{\mathrm{local}}$。设继发病例数服从几何分布，则单条输入链最终消退的概率为
+\begin{equation}
+q=\begin{cases}
+1,&R_{\mathrm{local}}\leq1,\\
+1/R_{\mathrm{local}},&R_{\mathrm{local}}>1.
+\end{cases}
+\label{eq:chain-extinction}
+\end{equation}
+采用泊松继发分布时，$q$ 则为 $q=\exp[R_{\mathrm{local}}(q-1)]$ 在 $[0,1]$ 内的最小解。$R_{\mathrm{local}}>1$ 时存在持续传播的可能；亚临界条件下，有限输入链最终消退。
+
+题面给出的肯尼亚 9 例与尼日利亚 1 例是累计病例数。当地风险评估还取决于独立输入次数、当前活动病例及接触者调查结果。两国的应对重点是及时发现、规范收治、接触者随访和跨境信息共享，并据后续调查更新当地传播条件。

@@ -1,16 +1,74 @@
 % !TEX root = ../../main.tex
-\subsection{Task 3}
+\subsection{Task 3: Dynamic Effects of Interventions}
 \label{sec:task-3}
-test
 
-\subsubsection{Problem Analysis}
-test
+\subsubsection{Intervention Mechanisms}
 
-\subsubsection{Model Formulation}
-test
+常规措施通过接触系数、发现与入院过程及安葬过程进入模型，见表~\ref{tab:control-mechanisms}。调整原始参数后，按式~\eqref{eq:probability-coefficients}--\eqref{eq:exit-rates}重算派生系数。
 
-\subsubsection{Solution Method}
-test
+\begin{table}[!htbp]
+\centering
+\caption{防控措施的参数对应}
+\label{tab:control-mechanisms}
+\small
+\begin{tabular}{@{}p{0.23\linewidth}p{0.28\linewidth}p{0.42\linewidth}@{}}
+\toprule
+措施 & 作用位置 & 机制 \\
+\midrule
+及时发现与隔离 & $\gamma_h,\theta$ & 缩短社区停留，提高入院比例 \\
+接触者随访 & $c_{\mathrm{follow}}$ & 经发现延迟、转诊与覆盖率影响入院过程 \\
+安全安葬 & $\beta_{F,k},\gamma_f$ & 减少遗体接触与未安葬停留 \\
+医院感染控制 & $\beta_H$ & 降低院内有效接触 \\
+社区健康教育 & $\beta_I$ & 减少社区风险接触 \\
+接种与指定治疗 & $\nu,\phi,\varepsilon$ & 获得保护、入院分流与治疗结局变化 \\
+暴露后预防 & 暴露至发病过程 & 需给定用药时点和保护效力 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\subsubsection{Results and Interpretation}
-test
+接种引入保护状态 $V$，治疗将入院者按比例 $\phi$ 分入 $T$。设治疗组最终死亡概率为 $\delta(1-\varepsilon)$，则
+\begin{equation}
+\delta_{2t}=
+\frac{\delta(1-\varepsilon)\gamma_{it}}
+{\delta(1-\varepsilon)\gamma_{it}
++[1-\delta(1-\varepsilon)]\gamma_{dt}},\qquad
+\Sigma_T=\gamma_{dt}\delta_{2t}+\gamma_{it}(1-\delta_{2t}).
+\label{eq:therapy-probability}
+\end{equation}
+相应状态方程为
+\begin{equation}
+\left\{\begin{aligned}
+\dot S_{jk}&=-\lambda_{jk}S_{jk}-\nu S_{jk}+(\mathcal{L}S)_{jk},\\
+\dot V_{jk}&=\nu S_{jk}+(\mathcal{L}V)_{jk},\\
+\dot H_{jk}&=\gamma_h\theta_1(1-\phi)I_{jk}
+-\Sigma_H H_{jk}+(\mathcal{L}H)_{jk},\\
+\dot T_{jk}&=\gamma_h\theta_1\phi I_{jk}
+-\Sigma_T T_{jk}+(\mathcal{L}T)_{jk}.
+\end{aligned}\right.
+\label{eq:intervention-extension}
+\end{equation}
+$E,I$ 方程不变；$F$ 增加 $\gamma_{dt}\delta_{2t}T_{jk}$，$R$ 增加 $\gamma_{it}(1-\delta_{2t})T_{jk}$，$\dot D$ 加入各组治疗死亡流量之和。院内接触人数取 $\sum_\ell(H_{j\ell}+T_{j\ell})$。$V$ 表示完全保护情景，$\nu$ 为获得保护的有效速率。取 $\nu=\phi=0$、$V(0)=T(0)=0$，扩展系统退化为六状态模型。
+
+\subsubsection{Scenario and Timing Comparisons}
+
+单措施与组合方案使用共同初态和终点，以
+\begin{equation}
+C(t_{\mathrm{end}})-C(t_{\mathrm{int}}),\qquad
+D(t_{\mathrm{end}})-D(t_{\mathrm{int}})
+\label{eq:scenario-outcomes}
+\end{equation}
+分别衡量干预后的发病与死亡。报告病例按式~\eqref{eq:reported-cumulative}折算。持续时间采用预先规定的周病例阈值与连续满足周数，超过模拟窗口的结果按右删失处理。
+
+组合方案依次为：隔离、随访与院内防护；在此基础上增加安全安葬；再增加指定治疗。接种另设独立扩展，以区分保护易感者与改善患者结局的作用。
+
+时机比较分别在 7 月中旬和 10 月 25--26 日从同一历史轨迹分支，保持干预强度与日历终点相同。两支路均计入分支前的历史累计量。
+
+\subsubsection{Follow-up Resources}
+
+以 2.1 万名社区工作者为等效随访人力基数、保持单位人力工作量不变，将 $c_{\mathrm{follow}}$ 从 78\% 提高至 90\% 或 95\% 所需的新增人力为
+\begin{equation}
+21\,000\left(\frac{0.90}{0.78}-1\right)\approx3\,231,\qquad
+21\,000\left(\frac{0.95}{0.78}-1\right)\approx4\,577.
+\label{eq:followup-workforce}
+\end{equation}
+实际需求取决于专职随访人数、服务范围与安全条件。预算按新增人天、交通、培训和安全保障分项核算；覆盖率对病例的影响由发现延迟和转诊过程连接到模型。

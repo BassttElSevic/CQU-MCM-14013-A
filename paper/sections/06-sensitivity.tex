@@ -1,4 +1,65 @@
 % !TEX root = ../main.tex
-\section{Sensitivity Analysis}
+\section{Sensitivity and Uncertainty Analysis}
 \label{sec:sensitivity}
-test
+
+\subsection{Reporting and Regularization}
+
+在常数报告比例近似下，研究期发病数满足
+\begin{equation}
+C(t_{\mathrm{end}})-C(0)
+=\frac{C^{\mathrm{rep}}(t_{\mathrm{end}})-C^{\mathrm{rep}}(0)}{\rho},
+\qquad
+\frac{\partial\log[C(t_{\mathrm{end}})-C(0)]}{\partial\log\rho}=-1.
+\label{eq:reporting-elasticity}
+\end{equation}
+因此，在报告病例固定时，推断规模对 $\rho$ 具有单位负弹性。检出比例的不确定性直接传递至发病规模。
+
+表~\ref{tab:regularization}比较四组具有相同观测、节点和目标形式的参考拟合。$\eta$ 从 0.1 增至 10，RMSE 极差为 0.26 例，相对变化不足 1\%；该组解的样本内误差对平滑权重较不敏感。
+
+\begin{table}[!htbp]
+\centering
+\caption{参考拟合的平滑权重比较}
+\label{tab:regularization}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+$\eta$ & $R^2$ & RMSE（例） & MAPE \\
+\midrule
+0.1 & 0.9557 & 34.48 & 6.80\% \\
+1.0 & 0.9556 & 34.53 & 6.80\% \\
+3.0 & 0.9556 & 34.51 & 6.80\% \\
+10.0 & 0.9550 & 34.73 & 6.81\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+这四组拟合使用独立的参考标定，其数值与表~\ref{tab:fit-audit}的全样本结果分别列示。历史拟合对 $\eta$ 的稳定性与未来预测能力是不同性质的检验。
+
+\subsection{Observation Window and Forecast Baseline}
+
+第 27 周未完整覆盖，其残差占原验证段平方误差的 66.1\%。移除该周后，参考预测的 RMSE 从 119.50 降为 75.11 例，MAPE 从 20.15\% 降为 11.57\%。这一变化反映评价窗口的影响；其他周的预测值保持不变。
+
+进一步以训练末周的 430 例作持续性预测，即后续各周均预测 430 例。该基准只使用训练期信息，结果见表~\ref{tab:forecast-baseline}。
+
+\begin{table}[!htbp]
+\centering
+\caption{参考预测与持续性基准的样本外比较}
+\label{tab:forecast-baseline}
+\begin{tabular}{@{}llrr@{}}
+\toprule
+方法 & 验证区间 & RMSE（例） & MAPE \\
+\midrule
+参考模型 & 第 21--27 周 & 119.50 & 20.15\% \\
+持续性基准 & 第 21--27 周 & 60.10 & 11.41\% \\
+参考模型 & 第 21--26 周 & 75.11 & 11.57\% \\
+持续性基准 & 第 21--26 周 & 58.09 & 10.02\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+两个评价窗口内，持续性基准均优于参考模型。外推偏差并非完全由末周缺报造成，固定末节点强度未能描述随后回落。增加历史拟合自由度不足以替代滚动验证。
+
+\subsection{Structural and Scenario Uncertainty}
+
+模型不确定性主要来自三个方面。数据层面，补报、死亡分类缺失和报告日期与发病日期的差异影响观测关系。参数层面，$k(t)$ 与基础接触系数存在尺度混淆，$\rho$ 与初始规模共同影响报告曲线。结构层面，家庭型均匀混合及各状态共用流动规则简化了接触和出行差异。
+
+病毒病程差异影响转移速率；冲突局势影响转诊、随访和人口流动；社区行为影响有效接触与安葬条件。这些因素宜作为相关情景共同变化，而非视作相互独立的参数扰动。当前检验量化了报告比例、平滑权重和评价窗口的影响；分传播通道的敏感性排序与组合方案稳健性需在统一标定后计算。
